@@ -1,0 +1,55 @@
+Sort:
+sort(a,a+n,compare): compare là điều kiện sắp xếp ví dụ
+	sort(a,a+n,ss) (ss là hàm so sánh các xâu theo thứ tự số)
+	input: 123 3 2
+	output(theo xâu): 123 3 2
+	output(thực tế): 2 3 123
+
+NHỚ LÝ THUYẾT XÂU
+
+Nhập văn bản bằng std::getline()
+* Khai báo biến: 
+String s;
+Char s;
+* Xuất nhập chuỗi:
+Cout<<”\nNhap chuoi:”;
+getline(cin,s);
+* Các hàm chuỗi trong c++
+1. Hàm lấy độ dài của chuỗi
+- s.length()
+- strlen (s)
+- s.size();
+2. Hàm xóa
+- s.erase(i,1); xóa kí tự tại vị trí i, xóa 1 kí tự.
+- s.erase(s.begin()+3); Xóa một kí tự trong chuỗi S tại vị trí thứ 3:
+- s.erase(x,y); xóa đi y kí tự bắt đầu tại vị trí x.
+- s.erase(s.begin()+x); xóa đi kí tự tại vị trí x.
+- s.erase(s.begin()+x,s.begin()+y); Xóa kí tự từ chỉ số x đến chỉ số y-1.
+3. Hàm chèn:
+- s.insert(s.begin()+3,’T’): Hàm thêm kí tự T vào vị trí 3.
+- s.insert(x,y,’z’): Thêm y lần kí tự Z vào vị trí x.
+- s.insert(s.begin()+x,’Y’): Thêm kí tự Y vào vị trí x.
+- s.insert(s.begin()+x,y,’Z’): Thêm y lần kí tự Z vào vị trí x.
+- s.push_back(‘C’): Thêm một kí tự vào cuối chuỗi.
+4. Hàm
+êm y lần ký tự z vào vị trí x.
+str.insert(str.begin() + x, 'y'); // Thêm ký tự y vào vị trí x.
+str.insert(str.begin() + x, y, 'z'); // Thêm y lần ký tự z vào vị trí x.
+str.insert(str.begin() + x, str2.begin() + y, str2.begin() + z); // Thêm chuỗi ký tự con của chuỗi str2 bắt đầu từ vị trí y cho đến vị trí z - 1 vào vị trí x trong chuỗi str.
+
+============ LẤY CHUỖI CON ================
+string str2 = str.substr(x, y); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x và lấy ra y ký tự.
+string str2 = str.substr(x); // Lấy ra chuỗi con của chuỗi str bắt đầu từ vị trí x cho đến cuối chuỗi.
+
+============ TÌM KIẾM ============
+int found = str.find('x');
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của ký tự x trong chuỗi str.
+else => Không tồn tại ký tự x trong chuỗi str. 
+
+int found = str.find("x");
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của chuỗi x trong chuỗi str.
+else => Không tồn tại chuỗi x trong chuỗi str. 
+int found = str.find("x", y, z);
+if(found != string::npos) => trả về found chính là vị trí xuất hiện đầu tiên của chuỗi x lấy ra z ký tự và sẽ bắt đầu tìm kiếm từ vị trí y trong chuỗi str.
+else => Không tồn tại chuỗi x trong chuỗi str. 
+Để đọc đầy đủ chuỗi có khoảng trắng từ đối tượng nhập của lớp iostream (ví dụ cin), bạn nên sử dụng hàm std::getline() (trong namespace std)

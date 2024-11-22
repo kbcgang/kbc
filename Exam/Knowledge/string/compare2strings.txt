@@ -1,0 +1,8 @@
+bool check(string a,string b)
+{
+    while(a.size()<b.size())
+        a='0'+a;
+    while(a.size()>b.size())
+        b='0'+b;
+    return a<b;
+}

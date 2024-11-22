@@ -1,0 +1,22 @@
+///Suck Kiên's brain is very good to your brain
+///Kiên will become Vegapunk
+///Made by Nguyễn Hữu Đạt
+#include<bits/stdc++.h>
+#define int long long
+#define mod 1000000007
+using namespace std;
+int a,b,n,m;
+main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    cin>>a>>b>>n;
+    for(int i=3;i<=n;i++)
+    {
+        m=b*2-a;
+        a=b;
+        b=m;
+    }
+    cout<<b;
+}

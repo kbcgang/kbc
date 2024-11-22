@@ -1,0 +1,5 @@
+n!/(k1!*k2!)
+
+n là độ dài của dãy
+k1 là số lượng dãy thứ 1
+k2 là số lượng dãy thứ 2
