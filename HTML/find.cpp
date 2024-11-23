@@ -29,4 +29,5 @@ int main()
         }
     }
     cout << dem;
+    exit(0);
 }
