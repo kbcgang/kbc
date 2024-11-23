@@ -1,66 +1,44 @@
-///Sức mạnh của lòng kiêu hãnh --- trungkien1252010@gmail.com ---
+///Sức mạnh của lòng kiêu hãnh --- trungkien1252010@gmail.com ----
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-#define maxn 100010
-int n, m, p, t, b, home[maxn], bus[maxn];
-int near[maxn], l, r, mid, id, i;
+string s,s1,x,x1;
+kien sum, sum1;
 
 int main()
 {
-    kien res = 0;
-    cin >> n >> m >> p >> t >> b;
-    for(i = 1; i <= m; i++)
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    getline(cin , x);
+    getline (cin , x1);
+    for (int i = 0; i < x.size(); i++)
     {
-        cin >> home[i];
-    }
-    for(i = 1; i <= p; i++)
-    {
-        cin >> bus[i];
-    }
-    home[0] = 1;
-    home[m + 1] = n;
-    bus[0] = 1;
-    bus[p + 1] = n;
-    for(i = 1; i <= m; i++)
-    {
-        l = 0;
-        r = p + 1;
-        id = 0;
-        while(l <= r)
+        if (x[i] >= '0' and x[i] <= '9')
         {
-            mid = (l + r) / 2;
-            if(abs(home[i] - bus[mid]) < abs(home[i] - bus[id]))
-            {
-                id = mid;
-            }
-            if(bus[mid] > home[i])
-            {
-                r = mid - 1;
-            }
-            else if(bus[mid] < home[i])
-            {
-                l = mid + 1;
-            }
-            else
-            {
-                break;
-            }
+            s += x[i];
         }
-        near[i] = bus[id];
     }
-    near[0] = 1;
-    near[m + 1] = n;
-    for(i = 0; i <= m; i++)
+    for (int i = 0; i < x1.size(); i++)
     {
-        kien f1, f2, f3;
-        f1 = (kien)abs(near[i] - home[i]) * t + b;
-        f2 = (kien)abs(near[i + 1] - home[i + 1]) * t;
-        f3 = (kien)abs(home[i + 1] - home[i]) * t;
-        res += + min(f1 + f2, f3);
+        if (x1[i] >= '0' and x1[i] <= '9')
+        {
+            s1 += x1[i];
+        }
     }
-    cout << res;
+    if (s.size() < s1.size()) swap(s, s1);
+    int tam = 0;
+    string ans = "";
+    for (int i = s.size() - 1, j = s1.size() - 1; i >= 0 || tam; i--, j--) {
+        int num_a = (i >= 0) ? (s[i] - '0') : 0;
+        int num_b = (j >= 0) ? (s1[j] - '0') : 0;
+        int sum = num_a + num_b + tam;
+        tam = sum / 10;
+        ans = char(sum % 10 + '0') + ans;
+    }
+
+    cout << ans << endl;
 }
