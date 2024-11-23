@@ -1,33 +1,66 @@
-///Niềm tin chính là chìa khóa giúp bạn vững tin với con đường mình đã chọn.
-///Thất bại nhiều hay ít KHÔNG QUAN TRỌNGGG.
+///Sức mạnh của lòng kiêu hãnh --- trungkien1252010@gmail.com ---
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,f[1000000], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+#define maxn 100010
+int n, m, p, t, b, home[maxn], bus[maxn];
+int near[maxn], l, r, mid, id, i;
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    cin >> n >> k;
-    for (int i = 1; i <= n; i++)
+    kien res = 0;
+    cin >> n >> m >> p >> t >> b;
+    for(i = 1; i <= m; i++)
     {
-        cin >> a[i];
-        f[i] = f[i-1] + a[i];
-        dp[f[i]]++;
+        cin >> home[i];
     }
-    for (int i = 1; i <= n; i++)
+    for(i = 1; i <= p; i++)
     {
-        if (dp[k - a[i]] != 0)
+        cin >> bus[i];
+    }
+    home[0] = 1;
+    home[m + 1] = n;
+    bus[0] = 1;
+    bus[p + 1] = n;
+    for(i = 1; i <= m; i++)
+    {
+        l = 0;
+        r = p + 1;
+        id = 0;
+        while(l <= r)
         {
-            dem += dp[k-a[i]];
+            mid = (l + r) / 2;
+            if(abs(home[i] - bus[mid]) < abs(home[i] - bus[id]))
+            {
+                id = mid;
+            }
+            if(bus[mid] > home[i])
+            {
+                r = mid - 1;
+            }
+            else if(bus[mid] < home[i])
+            {
+                l = mid + 1;
+            }
+            else
+            {
+                break;
+            }
         }
+        near[i] = bus[id];
     }
-    cout << dem;
-    exit(0);
+    near[0] = 1;
+    near[m + 1] = n;
+    for(i = 0; i <= m; i++)
+    {
+        kien f1, f2, f3;
+        f1 = (kien)abs(near[i] - home[i]) * t + b;
+        f2 = (kien)abs(near[i + 1] - home[i + 1]) * t;
+        f3 = (kien)abs(home[i + 1] - home[i]) * t;
+        res += + min(f1 + f2, f3);
+    }
+    cout << res;
 }
