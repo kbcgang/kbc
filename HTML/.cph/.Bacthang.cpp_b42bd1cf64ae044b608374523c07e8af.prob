@@ -1,0 +1,1 @@
+{"name":"Local: Bacthang","url":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\HTML\\Bacthang.cpp","tests":[{"id":1733064625665,"input":"3 2\n5 10\n7 5\n5 5\n6\n9 5 3 5 12 10\n","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\HTML\\Bacthang.cpp","group":"local","local":true}
