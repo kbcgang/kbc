@@ -4,26 +4,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
-#define JAV main
 #define Million 1000000
 #define NT 10000000
-#define MOD 1000000007
-string s;
-char c;
-
+#define JAV main
+using namespace std;
+string s, a;
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    getline(cin , s);
-    cin >> c;
-    for (int i = 0; i < s.size(); i++)
+    getline(cin, s);
+    getline(cin, a);
+    int m = s.find(a, 0);
+    for (int i = m; i < s.size(); i++)
     {
-        if (s[i] == c)
-        {
-            cout << i + 1;
-            exit(0);
-        }
+        cout << s[i];
     }
 }

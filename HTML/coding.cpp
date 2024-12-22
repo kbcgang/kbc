@@ -11,36 +11,6 @@ using namespace std;
 kien n,k,m,dem,f[NT + 5], a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
 
-bool ktr(int x, int vtr)
-{
-    for (int i = vtr; i <= n; i++)
-    {
-        if (x < a[i])
-        {
-            
-        }
-    }
-}
-
-int tknp(int n, int vtr)
-{
-    int l = 1, r = maxx;
-    int mid, kq = -1;
-    while (l <= r)
-    {
-        mid = (l + r) / 2;
-        if (ktr(mid, vtr) == true)
-        {
-            kq = mid;
-            r = mid - 1;
-        }
-        else
-        {
-            l = mid + 1;
-        }
-    }
-}
-
 JAV()
 {
     ios_base::sync_with_stdio(0);
@@ -50,11 +20,34 @@ JAV()
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        maxx = max(maxx, a[i]);
     }
-
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= (n - (k*5) + 1); i++)
     {
-
+        dem = 0;
+        for (int j = i; j <= i + (k*5) - 1; j++)
+        {
+            dem++;
+            if (dem <= 5)
+            {
+                if (dem % 2 == 0)
+                {
+                    dp[i] += -dem*a[j];
+                }
+                else
+                {
+                    dp[i] += dem*a[j];
+                }
+            }
+            else
+            {
+                dem = 0;
+            }
+        }
+        cout << dp[i] << " ";
     }
+    cout << *max_element(dp + 1, dp + n);
 }
+
+/// 2 + (-2 * 3) + (3 * -3) + (-4 * -2) + (5 * -1)
+/// 2 - 6 - 9 + 8 - 5 = -10
+/// 1 + -4 + 9 + 12 + -5 = 13

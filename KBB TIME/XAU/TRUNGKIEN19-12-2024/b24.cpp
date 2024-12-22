@@ -8,22 +8,25 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
+kien n,k,m,dem, f[Million];
+kien maxx,minn, vtr,ans,l,r;
 string s;
-char c;
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    getline(cin , s);
-    cin >> c;
+    getline(cin ,s);
     for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] == c)
+        f[s[i]]++;
+    }
+    for (int i = 0; i <= 235; i++)
+    {
+        if (f[char(i)] > 0)
         {
-            cout << i + 1;
-            exit(0);
+            cout << char(i) << " " << f[char(i)] << "\n";
         }
     }
 }

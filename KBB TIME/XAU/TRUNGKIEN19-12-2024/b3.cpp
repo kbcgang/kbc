@@ -8,8 +8,7 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-string s;
-char c;
+string s,s1;
 
 JAV()
 {
@@ -17,13 +16,6 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     getline(cin , s);
-    cin >> c;
-    for (int i = 0; i < s.size(); i++)
-    {
-        if (s[i] == c)
-        {
-            cout << i + 1;
-            exit(0);
-        }
-    }
+    getline(cin, s1);
+    cout << s << s1;
 }
