@@ -8,32 +8,34 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,f[NT + 5], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+kien n,k,m,dem;
+kien maxx,minn, vtr,ans,l,r;
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n;
-    for (int i = 1; i <= n; i++)
+    cin >> n >> k;
+    for (int i = n; i < k; i++)
     {
-        cin >> a[i];
-        f[a[i]]++;
-    }
-    for (int i = 1; i <= NT; i++)
-    {
-        if (f[i] >= 2)
+        dem++;
+        if (i < 12 and dem <= 4)
         {
-            k = i;
+            ans += 6;
         }
-        if (f[i] >= 4)
+        else if (i >= 12 and dem <= 4)
         {
-            m = i;
+            ans += 10;
+        }
+        else if (i < 12 and dem > 4)
+        {
+            ans += 3;
+        }
+        else if (i >= 12 and dem > 4)
+        {
+            ans += 5;
         }
     }
-    cout << k * k << " ";
-    cout << m * m;
-    return 0;
+    cout << ans;
 }

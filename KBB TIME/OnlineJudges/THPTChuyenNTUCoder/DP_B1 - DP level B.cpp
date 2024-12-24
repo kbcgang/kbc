@@ -20,20 +20,18 @@ JAV()
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        f[a[i]]++;
-    }
-    for (int i = 1; i <= NT; i++)
+    }   
+    for (int i = 1; i <= n; i++)
     {
-        if (f[i] >= 2)
+        dp[i] = 1;
+        for (int j = 1; j < i; j++)
         {
-            k = i;
-        }
-        if (f[i] >= 4)
-        {
-            m = i;
+            if (a[j] < a[i])
+            {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
         }
     }
-    cout << k * k << " ";
-    cout << m * m;
-    return 0;
+    cout << *max_element(dp + 1, dp + n + 1);
 }
+    

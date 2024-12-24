@@ -16,24 +16,10 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n;
-    for (int i = 1; i <= n; i++)
+    cin >> n >> k;
+    for (kien i = 1; i <= n; i++)
     {
         cin >> a[i];
-        f[a[i]]++;
     }
-    for (int i = 1; i <= NT; i++)
-    {
-        if (f[i] >= 2)
-        {
-            k = i;
-        }
-        if (f[i] >= 4)
-        {
-            m = i;
-        }
-    }
-    cout << k * k << " ";
-    cout << m * m;
-    return 0;
+    cout << a[k + 1];
 }
