@@ -1,0 +1,1 @@
+{"name":"Local: SORTDIV","url":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\SORTDIV.cpp","tests":[{"id":1735308537041,"input":"5 3\n1 2 6 4 5\n2 3 8 5 6","output":"3 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\SORTDIV.cpp","group":"local","local":true}

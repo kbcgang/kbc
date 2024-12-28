@@ -14,13 +14,13 @@ kien a[100001];
 int main()
 {
     cin >> n >> k;
-    for (kien i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
     sort(a, a + n);
 
-    for (kien i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         int vtd = lower_bound(a + i + 1, a + n, a[i] + k) - a;
         if (vtd == n || a[vtd] != a[i] + k)
