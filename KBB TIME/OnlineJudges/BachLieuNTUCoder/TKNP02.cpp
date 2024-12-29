@@ -11,10 +11,10 @@ using namespace std;
 kien n, k, m, dem, a[1000000];
 kien maxx, minn, vtr, ans, l, r, dp[1000000];
 
-bool tknp(int x)
+bool tknp(kien x)
 {
     l = 1, r = n;
-    int mid, kq = -1;
+    kien mid, kq = -1;
     while (l <= r)
     {
         mid = (l + r) / 2;
@@ -41,12 +41,12 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    for (int i = 1; i <= n; i++)
+    for (kien i = 1; i <= n; i++)
     {
         cin >> a[i];
     }
     sort(a + 1, a + n + 1);
-    int t = 0;
+    kien t = 0;
     cin >> t;
     while (t--)
     {
