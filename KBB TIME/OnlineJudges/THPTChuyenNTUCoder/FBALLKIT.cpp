@@ -8,8 +8,8 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,b[Million + 5], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+int n, dem, sum, timer[1000000], num[100005], AC, l[100005], r[100005];
+int pen, ans, k, f[100005];
 
 JAV()
 {
@@ -17,19 +17,20 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    for (int i =1 ; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        cin >> a[i];
+        cin >> num[i] >> timer[i];
+        l[num[i]]++;
+        r[timer[i]]++;
+        f[i] = n-1;
     }
     for (int i = 1; i <= n; i++)
     {
-        cin >> b[i];
+        if (l[timer[i]] >= 1)
+        {
+            f[i] += l[timer[i]];
+        }
+        cout << f[i] << " " << 2*(n-1) - f[i] << endl;
     }
-    sort (a + 1, a + 1 + n);
-    sort (b + 1, b + 1 + n);
-    for (int i = 1; i <= n; i++)
-    {
-        ans += abs(a[i] - b[i]);
-    }
-    cout << ans;
 }
+    

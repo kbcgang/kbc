@@ -8,7 +8,7 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,b[Million + 5], a[1000000];
+kien n,k,m,dem, a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
 
 JAV()
@@ -17,19 +17,18 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    for (int i =1 ; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
+        ans += a[i];
     }
     for (int i = 1; i <= n; i++)
     {
-        cin >> b[i];
+        if (ans - a[i] == a[i])
+        {
+            cout << a[i];
+            exit(0);
+        }
     }
-    sort (a + 1, a + 1 + n);
-    sort (b + 1, b + 1 + n);
-    for (int i = 1; i <= n; i++)
-    {
-        ans += abs(a[i] - b[i]);
-    }
-    cout << ans;
+    cout << 'N';
 }

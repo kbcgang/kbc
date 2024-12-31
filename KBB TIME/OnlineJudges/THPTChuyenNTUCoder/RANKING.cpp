@@ -8,8 +8,9 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,b[Million + 5], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+kien n, dem, maxx = 0, ans = 0, minn = 0, vtr = 0;
+kien a[Million];
+unordered_map <int, int> f;
 
 JAV()
 {
@@ -17,19 +18,30 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    for (int i =1 ; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
+        f[a[i]]++;
+        if (f[a[i]] == 1)
+        {
+            vtr++;
+        }
     }
+    sort (a + 1, a + n + 1);
+    dem = vtr;
+    vtr = 1;
+    a[0] = INT_MAX;
     for (int i = 1; i <= n; i++)
     {
-        cin >> b[i];
-    }
-    sort (a + 1, a + 1 + n);
-    sort (b + 1, b + 1 + n);
-    for (int i = 1; i <= n; i++)
-    {
-        ans += abs(a[i] - b[i]);
+        if (a[i] > a[i-1])
+        {
+            dem--;
+            ans += dem;
+        }
+        else
+        {
+            ans += dem;
+        }
     }
     cout << ans;
 }
