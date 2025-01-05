@@ -1,6 +1,6 @@
-///Hãy làm Sư tử, đừng làm Nai.
-///Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
+/// Hãy làm Sư tử, đừng làm Nai.
+/// Hãy làm thợ săn, đừng làm con mồi.
+///  --- trungkien1252010@gmai.com ---
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
@@ -8,30 +8,39 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-long long a[1000001]; 
-long long b[100001]; 
-int n, q;             
+kien a[1000001];
+kien b[100001];
+int n, q;
 
-long long gannhat(long long x)
+kien gannhat(kien x)
 {
     int l = 0, r = n - 1;
     while (l < r)
     {
         int mid = l + (r - l) / 2;
         if (a[mid] < x)
+        {
             l = mid + 1;
+        }
         else
+        {
             r = mid;
+        }
     }
 
-    long long closest = abs(a[l] - x);
+    kien minn = abs(a[l] - x);
     if (l > 0)
-        closest = min(closest, abs(a[l - 1] - x));
-    return closest;
+    {
+        minn = min(minn, abs(a[l - 1] - x));
+    }
+    return minn;
 }
 
-int main()
+JAV()
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     cin >> n;
     for (int i = 0; i < n; ++i)
     {
