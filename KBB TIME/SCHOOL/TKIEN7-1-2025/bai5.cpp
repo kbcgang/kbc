@@ -11,6 +11,7 @@ using namespace std;
 kien n,k,m,dem, a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
 // nung
+//sech
 
 int tknp(int x, int vtr)
 {
