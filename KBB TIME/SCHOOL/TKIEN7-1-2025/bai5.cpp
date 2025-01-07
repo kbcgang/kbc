@@ -10,6 +10,7 @@ using namespace std;
 #define MOD 1000000007
 kien n,k,m,dem, a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
+// nung
 
 int tknp(int x, int vtr)
 {
