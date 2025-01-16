@@ -1,6 +1,7 @@
-///Hãy làm Sư tử, đừng làm Nai.
+///Hãy làm Sư tử, đừng làm Nai.😅😅😅
 ///Hãy làm thợ săn, đừng làm con mồi.
 /// --- trungkien1252010@gmai.com ---
+///☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
@@ -9,21 +10,19 @@ using namespace std;
 #define NT 10000000
 #define MOD 1000000007
 kien n,k,m,dem;
+kien maxx,minn, vtr,ans,l,r;
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> m >> k;
-    if (n >= k)
+    cin >> n;
+    k = sqrt(n);
+    cout << k / 2 + k % 2 << "\n";
+    for (kien i = 1; i*i <= n; i += 2)
     {
-        cout << int(n*m*0.8);
+        dem += i * i;
     }
-    else
-    {
-        dem = k*m*0.8;
-        cout << int(min(n*m, dem));
-    }
-
+    cout << dem;
 }
