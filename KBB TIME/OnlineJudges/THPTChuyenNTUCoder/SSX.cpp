@@ -10,6 +10,9 @@ kien maxx, minn, vtr;
 
 int main()
 {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     string S1, S2;
     cin >> S1 >> S2;
 

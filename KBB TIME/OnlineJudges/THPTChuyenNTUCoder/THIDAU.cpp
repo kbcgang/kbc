@@ -25,9 +25,6 @@ JAV()
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i].second;
-    }
-    for (int i = 1; i <= n; i++)
-    {
         dp[i] = a[i].second;
     }
     for (int i = 1; i <= n; i++)
