@@ -9,8 +9,8 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k, a[Million];
-kien ans;
+kien n,k,m,dem, a[1000000];
+kien maxx,minn, vtr,ans,l,r;
 
 JAV()
 {
@@ -22,27 +22,13 @@ JAV()
     {
         cin >> a[i];
     }
-    map<int, int> pp;
-    int i = 1, j = 1;
-    int dem = 0;
-    while (j <= n)
+    minn = 5 - k;
+    for (int i = 1; i <= n; i++)
     {
-        if (pp[a[j]] == 0)
+        if (a[i] <= minn)
         {
             dem++;
         }
-        pp[a[j]]++;
-        while (dem > k)
-        {
-            pp[a[i]]--;
-            if (pp[a[i]] == 0)
-            {
-                dem--;
-            }
-            i++;
-        }
-        ans += (j - i + 1);
-        j++;
     }
-    cout << ans << endl;
+    cout << dem / 3;
 }

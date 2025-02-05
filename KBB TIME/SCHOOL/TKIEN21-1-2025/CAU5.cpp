@@ -22,7 +22,7 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien maxx, a[Million];
+kien a[Million];
 kien n, k;
 
 bool ktr(int n, int k, int x)
@@ -49,13 +49,12 @@ bool ktr(int n, int k, int x)
 
 int tknp()
 {
-    int l = 1, r = maxx, kq = r;
+    int l = 1, r = *max_element(a, a + n);
     while (l <= r)
     {
         int mid = (l + r) / 2;
         if (ktr(n, k, mid))
         {
-            kq = mid;
             r = mid - 1;
         }
         else
@@ -63,7 +62,7 @@ int tknp()
             l = mid + 1;
         }
     }
-    cout << kq;
+    cout << r+1;
 }
 
 JAV()
@@ -72,7 +71,6 @@ JAV()
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        maxx = max(maxx, a[i]);
     }
     tknp();
     return 0;
