@@ -9,38 +9,27 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,f[Million + 5], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
-
-void sangNT()
-{
-    fill(f + 1, f + 1 + Million, 1);
-    f[0] = f[1] = 0;
-    for (int i = 2; i <= sqrt(Million); i++)
-    {
-        if (f[i] == 1)
-        {
-            for (int j = i * i; j <= Million; j += i)
-            {
-                f[j] = 0;
-            }
-        }
-    }
-}
+kien n,k,m,dem, a[1000000];
+kien ans = INT_MAX,l,r;
+unordered_map <int, int> pp;
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    sangNT();
     cin >> n;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        if (f[a[i]] == 1)
+        pp[a[i]]++;
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (pp[a[i]] == 1)
         {
-            cout << a[i] << " ";
+            ans = min(ans, a[i]);
         }
     }
+    cout << ans;            
 }

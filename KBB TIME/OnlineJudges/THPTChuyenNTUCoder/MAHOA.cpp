@@ -12,29 +12,23 @@ using namespace std;
 kien n,k,m,dem,f[NT + 5], a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
 
-void sangNT()
-{
-    for (int i = 1; i <= Million; i++)
-    {
-        f[i] = 1;
-    }
-    f[0] = f[1] = 0;
-    for (int i = 2; i <= sqrt(Million); i++)
-    {
-        if (f[i])
-        {
-            for (int j = i*i; j <= Million; j += i)
-            {
-                f[j] = 0;
-            }
-        }
-    }
-}
-
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-
+    string s;
+    cin >> s;
+    n = s.size();
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            ans = ((ans * 10) % MOD +  (s[j] - '0')) % MOD;
+        }
+        ans %= MOD;
+        dem += ans;
+        ans = 0;
+    }
+    cout << dem;
 }

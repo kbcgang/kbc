@@ -14,7 +14,7 @@ kien maxx,minn, vtr,ans,l,r, dp[1000000];
 
 void sangNT()
 {
-    for (int i = 1; i <= Million; i++)
+    for (int i = 2; i <= Million; i++)
     {
         f[i] = 1;
     }
@@ -23,11 +23,30 @@ void sangNT()
     {
         if (f[i])
         {
-            for (int j = i*i; j <= Million; j += i)
+            for (int j = i * i; j <= Million; j += i)
             {
                 f[j] = 0;
             }
         }
+    }
+}
+
+bool daoso(int x)
+{
+    int x2 = x;
+    int x1 = 0;
+    while (x > 0)
+    {
+        x1 = x1 * 10 + (x % 10);
+        x /= 10;
+    }
+    if (x1 == x2)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
@@ -36,5 +55,26 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    sangNT();
+    cin >> l >> r;
+    if (int(sqrt(l) * sqrt(l)) == l)
+    {
+        l = sqrt(l);
+    }
+    else
+    {
+        l = sqrt(l) + 1;
+    }
+    for (int i = l; i <= sqrt(r); i++)
+    {
+        if (f[i])
+        {
+            if (daoso(i) == true)
+            {
+                ans++;
+            }
+        }
+    }
+    cout << ans;
 
 }
