@@ -1,0 +1,1 @@
+{"name":"Local: BS8","url":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\BS8.cpp","tests":[{"id":1739715433484,"input":"10\n1 2 3 4 7 10 5 8 9 16\n3\n5\n11\n6","output":"4\n9\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\BS8.cpp","group":"local","local":true}
