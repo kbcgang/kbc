@@ -6,43 +6,48 @@
 using namespace std;
 #define kien long long
 #define JAV main
-#define Million 1000000
+#define Million 200000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem, a[1000000];
+kien n,k,m,dem, a[Million];
 kien maxx,minn, vtr,ans,l,r;
+kien b[Million]; 
 
-kien ktr(kien cay)
+bool ktr(kien x, kien k)
 {
-    kien chat = 0;
-    for (kien i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        if (a[i] > cay)
+        kien tmp = a[i]; 
+        if (tmp > x)
         {
-            chat += a[i] - cay;
+            k -= (tmp / x) - (tmp % x == 0);  
+        }
+        if (k < 0)
+        {
+            return false;
         }
     }
-    return chat;
+    return true;
 }
 
-kien SAW(kien m, kien maxx)
+kien tknp(kien maxx, kien k)
 {
     kien l = 1, r = maxx;
-    kien kq = -1, mid;
+    kien mid, ans = 0;
     while (l <= r)
     {
         mid = (l + r) / 2;
-        if (ktr(mid) >= m)
+        if (ktr(mid, k) == true)
         {
-            kq = mid;
-            l = mid + 1;
+            ans = mid;
+            r = mid - 1;
         }
         else
         {
-            r = mid - 1;
+            l = mid + 1;
         }
     }
-    return kq;
+    return ans;
 }
 
 JAV()
@@ -50,16 +55,11 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    // if (fopen("DAYDEN.inp","r"))
-    // {
-    //     freopen("DAYDEN.inp", "r", stdin);
-    //     freopen("DAYDEN.out", "w", stdout);
-    // }
-    cin >> n >> m;
-    for (kien i = 1; i <= n; i++)
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        maxx = max(maxx, a[i]);
     }
-    cout << SAW(m, maxx);
+    sort (a + 1, a + 1 + n);
+    cout << tknp(a[n], k);
 }

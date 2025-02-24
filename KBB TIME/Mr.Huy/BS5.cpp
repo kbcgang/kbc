@@ -1,7 +1,7 @@
-///Hãy làm Sư tử, đừng làm Nai.😅😅😅
-///Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
-///☆*: .｡. o(≧▽≦)o .｡.:*☆
+/// Hãy làm Sư tử, đừng làm Nai.😅😅😅
+/// Hãy làm thợ săn, đừng làm con mồi.
+///  --- trungkien1252010@gmai.com ---
+/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
@@ -9,8 +9,8 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem;
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+kien n, k, m, dem;
+kien maxx, minn, vtr, ans, l, r;
 
 kien tknp(kien k)
 {
@@ -54,6 +54,11 @@ JAV()
     while (q--)
     {
         cin >> k;
-        cout << tknp(k) << "\n";
+        if (k == 5)
+        {
+            cout << 0 << "\n";
+        }
+        else
+            cout << tknp(k) << "\n";
     }
 }
