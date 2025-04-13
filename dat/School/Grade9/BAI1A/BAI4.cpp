@@ -14,6 +14,11 @@ void get_first()
 // chốt vị trí
     while(n[0]=='0')
         n.erase(0,1);
+    // if(n.size()<k)
+    // {
+    //     cout<<-1;
+    //     exit(0);
+    // }
     char Min=n[0];
     for (int j = 1; j <= n.size() - k; j++)
     {
@@ -48,7 +53,9 @@ void make_smallest()
     {
         get_lower(i);
     }
+    // if(ans.size()==0)
     cout << ans;
+    // else cout<<-1;
 }
 kien()
 {

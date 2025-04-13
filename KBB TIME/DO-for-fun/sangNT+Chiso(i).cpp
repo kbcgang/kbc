@@ -31,6 +31,24 @@ void sangNT()
     }
 }
 
+void sangNT()
+{
+     for (int i = 1; i <= Million; i++)
+     {
+          f[i] = 1;:
+     }
+     for (int i = 2; i <= sqrt(Million); i++)
+     {
+          if (f[i)
+          {
+               for (int j = i * i; j <= Million; j += i)
+               {
+                    f[j] = 0; 
+               }
+          }
+     }
+}
+
 JAV()
 {
     ios_base::sync_with_stdio(0);

@@ -9,12 +9,9 @@ using namespace std;
 #define Million 100000
 #define NT 10000000
 #define MOD 1000000007
-// Biến toàn cục cho hàm solveKien()
 ll n, k, m, dem, f[Million + 5], le[Million + 5], chan[Million + 5];
 ll maxx, minn, vtr, ans, l, r;
 unsigned long long a[Million + 5];
-
-// Hàm giải "kien" (tính số cặp chỉ số mà tổng prefix có cùng tính chẵn/lẻ)
 void solveKien()
 {
     cin >> n;
@@ -39,7 +36,6 @@ void solveKien()
     cout << chan[n] * (chan[n] - 1) / 2 + le[n] * (le[n] - 1) / 2 << "\n";
 }
 
-// Hàm giải "dat" (ví dụ một bài quy hoạch động cơ bản sử dụng chuỗi)
 void solveDat()
 {
     int N;
@@ -69,6 +65,6 @@ JAV()
     solveKien();
     // Nếu bạn muốn chạy giải pháp của bài "dat", hãy comment dòng trên và uncomment dòng dưới:
     // solveDat();
-
+    solveDat();
     return 0;
 }

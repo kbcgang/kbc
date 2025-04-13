@@ -10,6 +10,7 @@ void sub1() {
     }
     cout << minn << '\n';
 }
+
 void sub2() {
     int minn = INT_MAX;
     int l = u, r = v;

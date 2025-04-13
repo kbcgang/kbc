@@ -1,0 +1,14 @@
+*.exe
+thangclass
+Misc
+.vscode
+*.inp
+*.out
+*.o
+*.rar
+*.gif
+*.json
+*.zip
+*.cph
+test
+OnlineJudges

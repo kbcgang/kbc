@@ -1,64 +1,37 @@
-/// Kiên is reliable!!!
-/// Made by Nguyễn Hữu Đạt
-#include <bits/stdc++.h>
-// #define int long long
-#define kien main
-#define mod 1000000007
+#include<bits/stdc++.h>
+#define int long long
+#define MOD 1000000007
 using namespace std;
-long long n;
-long long s, checks;
-long long t;
-bool ktnt(long long n)
+int tonguoc(int n)
 {
-    for(int i=2;i<=sqrt(n);i++)
-        if(n%i==0)
-        return 0;
-    return 1;
-}
-void bigprime()
-{
-    for(long long i=10e9; ;i--)
+    int s = 0;
+    for(int i = 1; i <= sqrt(n); i++)
     {
-        if(ktnt(i)==1)
-        {
-            cout<<i<<"\n";
-            n=i;
-            return;
-        }
+        if(n % i == 0)
+            s += i + n / i;
+        if(n == i * i)
+            s -= i;
     }
+    return s;
 }
-kien()
+int32_t main()
 {
-    // if(fopen(".inp","r"))
-    // {
-    //     freopen(".inp","r",stdin);
-    //     freopen(".out","w",stdout);
-    // }
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    int n;
     cin >> n;
-    // bigprime();
-    for (long long i = 1; i <= sqrt(n); i++)
+    int kq = 0;
+    if(n % 2 == 0)
     {
-        if (n % i == 0)
-        {
-            s =( s + (i + 1ll*(n / i)))%mod;
-            checks += i + 1ll*(n / i);
-        }
-        if (1ll * i * i == n)
-        {
-            s -= i;
-            checks -= i;
-        }
+        kq = (n / 2) * (n + 1) % MOD;
     }
-
-    if(n%2==0)
-        t=((n/2)%mod)*((n+1)%mod);
     else
-        t=(((n+1)/2)%mod)*(n%mod);
-    long long check = n * (n + 1) / 2;
-    // cout<<check<<"\n";
-    cout << (check - checks)%mod << "\n";   ///code trâu
-    cout << (t - s)%mod;
+    {
+        kq = (n * ((n + 1) / 2)) % MOD;
+    }
+    kq -= tonguoc(n);
+    kq %= MOD;
+    kq = (kq + MOD) % MOD;
+    cout << kq << endl;
 }
