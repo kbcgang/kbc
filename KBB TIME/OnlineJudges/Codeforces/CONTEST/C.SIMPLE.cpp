@@ -35,12 +35,22 @@ bool check(string s, int k) {
 JAV() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int t;
+    // int t;
+    // cin >> t;
+    // while (t--) {
+    //     string s;
+    //     int k;
+    //     cin >> s >> k;
+    //     cout << (check(s, k) ? "YES\n" : "NO\n");
+    // }
+    kien t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         string s;
         int k;
         cin >> s >> k;
-        cout << (check(s, k) ? "YES\n" : "NO\n");
+        cout << check(s,k) ? "YES\n" : "NO\n";
+            
     }
 }

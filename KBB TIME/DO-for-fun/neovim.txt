@@ -1,0 +1,6 @@
+--- Một số phím tắt trong neovim ---
+
+1. space w = mở neo tree
+2. space e = mở neovim - tree
+3. :vs + tên file = mở file và chia đôi cửa sổ
+4. :
