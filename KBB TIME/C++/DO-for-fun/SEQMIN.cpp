@@ -12,28 +12,23 @@ using namespace std;
 kien n, k, m, dem, f[Million + 5], a[1000000];
 kien maxx, minn[Million], vtr, ans, l, r, dp[1000000];
 
-JAV()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    kien t;
-    cin >> t;
-    while (t--)
-    {
-        ans = 0;
-        cin >> n;
-        for (int i = 1; i <= n; i++)
-        {
-            cin >> a[i];
-            f[i] = f[i-1] + a[i];
-        }
-        for (int i = 1; i <= n; i++)
-        {
-            minn[i] = max(minn[i-1], f[i]);
-            ans = min(ans, f[i] - minn[i]);
-        }
-        cout << ans << "\n";
+JAV() {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+  kien t;
+  cin >> t;
+  while (t--) {
+    ans = 0;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+      cin >> a[i];
+      f[i] = f[i - 1] + a[i];
     }
-    
+    for (int i = 1; i <= n; i++) {
+      minn[i] = max(minn[i - 1], f[i]);
+      ans = min(ans, f[i] - minn[i]);
+    }
+    cout << ans << "\n";
+  }
 }

@@ -12,59 +12,51 @@ using namespace std;
 ll n, k, m, dem, f[Million + 5], le[Million + 5], chan[Million + 5];
 ll maxx, minn, vtr, ans, l, r;
 unsigned long long a[Million + 5];
-void solveKien()
-{
-    cin >> n;
-    f[0] = 0;
-    chan[0] = 1;
-    le[0] = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        cin >> a[i];
-        f[i] = f[i - 1] + a[i];
-        chan[i] = chan[i - 1];
-        le[i] = le[i - 1];
-        if (f[i] % 2 == 0)
-        {
-            chan[i] = chan[i - 1] + 1;
-        }
-        else
-        {
-            le[i] = le[i - 1] + 1;
-        }
+void solveKien() {
+  cin >> n;
+  f[0] = 0;
+  chan[0] = 1;
+  le[0] = 0;
+  for (int i = 1; i <= n; i++) {
+    cin >> a[i];
+    f[i] = f[i - 1] + a[i];
+    chan[i] = chan[i - 1];
+    le[i] = le[i - 1];
+    if (f[i] % 2 == 0) {
+      chan[i] = chan[i - 1] + 1;
+    } else {
+      le[i] = le[i - 1] + 1;
     }
-    cout << chan[n] * (chan[n] - 1) / 2 + le[n] * (le[n] - 1) / 2 << "\n";
+  }
+  cout << chan[n] * (chan[n] - 1) / 2 + le[n] * (le[n] - 1) / 2 << "\n";
 }
 
-void solveDat()
-{
-    int N;
-    ll ans = 0;
-    int d[2] = {0, 0};
-    int s = 0;
-    string str;
-    cin >> N;
-    d[0] = 1;
-    while (N--)
-    {
-        cin >> str;
-        int digit = str.back() - '0';
-        s = (s + (digit % 2)) % 2;
-        ans += d[s];
-        d[s]++;
-    }
-    cout << ans << "\n";
+void solveDat() {
+  int N;
+  ll ans = 0;
+  int d[2] = {0, 0};
+  int s = 0;
+  string str;
+  cin >> N;
+  d[0] = 1;
+  while (N--) {
+    cin >> str;
+    int digit = str.back() - '0';
+    s = (s + (digit % 2)) % 2;
+    ans += d[s];
+    d[s]++;
+  }
+  cout << ans << "\n";
 }
 
-JAV()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    // Chọn hàm cần chạy:
-    // Nếu bạn muốn chạy giải pháp của bài "kien", gọi:
-    solveKien();
-    // Nếu bạn muốn chạy giải pháp của bài "dat", hãy comment dòng trên và uncomment dòng dưới:
-    // solveDat();
-    solveDat();
-    return 0;
+JAV() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  // Chọn hàm cần chạy:
+  // Nếu bạn muốn chạy giải pháp của bài "kien", gọi:
+  solveKien();
+  // Nếu bạn muốn chạy giải pháp của bài "dat", hãy comment dòng trên và
+  // uncomment dòng dưới: solveDat();
+  solveDat();
+  return 0;
 }
