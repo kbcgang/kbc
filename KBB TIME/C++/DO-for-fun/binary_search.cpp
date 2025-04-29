@@ -1,69 +1,51 @@
-/// Hãy làm Sư tử, đừng làm Nai.😅😅😅
-/// Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
-/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
-#define kien long long
+#define ll long long
 #define JAV main
-#define Million 1000000
-#define NT 10000000
-#define MOD 1000000007
-kien n, k, m, dem, f[NT + 5], a[1000000];
-kien cars, minn = INT_MAX;
+#define pii pair<int, int>
+#define all(x) (x).begin(), (x).end()
+#define pb push_back
 
-bool ktr(int mid)
+ll kq(vector<pii> &p)
 {
-  int sovle = 0;
-  for (int i = 1; i <= n; i++)
+  if (p.size() <= 1)
+    return 0;
+  vector<ll> a, b;
+  for (int i = 0; i < p.size(); ++i)
   {
-    sovle += int(sqrt(mid / a[i]));
-    if (sovle >= cars)
-    {
-      return true;
-    }
+    int x = p[i].first, y = p[i].second;
+    a.pb(x + y);
+    b.pb(x - y);
   }
-  if (sovle >= cars)
+  auto f = [](vector<ll> &v)
   {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
-
-int tknp(int minn)
-{
-  int l = 1, r = n * n * minn;
-  int mid, kq = -1;
-  while (l <= r)
-  {
-    mid = (l + r) / 2;
-    if (ktr(mid))
-    {
-      kq = mid;
-      r = mid - 1;
-    }
-    else
-    {
-      l = mid + 1;
-    }
-  }
-  return kq;
+    sort(all(v));
+    ll res = 0, pre = 0;
+    for (int i = 0; i < v.size(); ++i)
+      res += v[i] * i - pre, pre += v[i];
+    return res;
+  };
+  return (f(a) + f(b)) / 2;
 }
 
 JAV()
 {
-  ios_base::sync_with_stdio(0);
+  ios::sync_with_stdio(0);
   cin.tie(0);
-  cout.tie(0);
-  cin >> n;
-  for (int i = 1; i <= n; i++)
+  int m, n;
+  cin >> m >> n;
+  vector<pii> M, S;
+  for (int i = 0; i < m; ++i)
   {
-    cin >> a[i];
-    minn = min(minn, a[i]);
+    string s;
+    cin >> s;
+    for (int j = 0; j < n; ++j)
+    {
+      if (s[j] == 'M')
+        M.pb({i, j});
+      else if (s[j] == 'S')
+        S.pb({i, j});
+    }
   }
-  cin >> cars;
-  cout << tknp(minn);
+  cout << kq(M) << " " << kq(S);
 }

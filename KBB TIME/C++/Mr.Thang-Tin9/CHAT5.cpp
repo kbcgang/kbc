@@ -1,6 +1,7 @@
-///Hãy làm Sư tử, đừng làm Nai.
-///Hãy làm thợ săn, đừng làm con mồi.
+/// Hãy làm Sư tử, đừng làm Nai.
+/// Hãy làm thợ săn, đừng làm con mồi.
 /// --- trungkien1252010@gmai.com ---
+/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
@@ -8,40 +9,36 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem, a[1000005];
-kien maxx;
+kien n, k, m, dem, f[Million + 5], a[1000000];
+kien maxx, minn, vtr, ans, l, r, dp[1000000];
 
-bool ktr(kien x)
+bool ktr(kien mid)
 {
-    kien wood = 0;
+    kien dem = 0;
     for (int i = 1; i <= n; i++)
     {
-        if (a[i] > x)
-        {
-            wood += a[i] - x;
-        }
+        dem += a[i] /  mid;
     }
-    return wood >= m;
+    return dem >= k;
 }
 
 kien tknp()
 {
-    kien l = 1, r = maxx, ans = 0;
-    kien mid = 0;
+    kien l = 1, r = maxx;
+    kien kq = -1, mid;
     while (l <= r)
     {
         mid = (l + r) / 2;
-        if (ktr(mid) == true)
+        if (ktr(mid))
         {
-            ans = mid;
             l = mid + 1;
+            kq = mid;
         }
-        else
-        {
+        else {
             r = mid - 1;
         }
     }
-    return ans;
+    return kq;
 }
 
 JAV()
@@ -49,7 +46,7 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> m;
+    cin >> n >> k;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
