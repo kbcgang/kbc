@@ -1,3 +1,7 @@
+/// Hãy làm Sư tử, đừng làm Nai.
+/// Hãy làm thợ săn, đừng làm con mồi.
+/// --- trungkien1252010@gmai.com ---
+/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
 

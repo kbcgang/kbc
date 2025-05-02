@@ -1,6 +1,6 @@
 /// Hãy làm Sư tử, đừng làm Nai.
 /// Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
+///  --- trungkien1252010@gmai.com ---
 /// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
@@ -9,26 +9,19 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n, k, m, dem;
-kien t;
-
-JAV()
+int t; 
+kien n, xx, ans;
+JAV() 
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);    
     cin >> t;
-    while (t--)
+    while (t--) 
     {
-    	cin >> n;
-    	if (n % 2 == 1)
-    	{
-    		cout << "YES\n";
-    	}
-    	else
-    	{
-    		cout << "NO\n";
-    	}
+        cin >> n;
+        xx = n / 2;
+        ans = xx * (n - xx) + 1;
+        cout << ans << "\n";
     }
 }
-    

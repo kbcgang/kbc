@@ -9,25 +9,23 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-float a,b,c;
+kien n,k,m,dem,f[NT + 5], a[1000000];
+kien maxx,minn, vtr,ans,l,r, dp[1000000];
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> a >> b >> c;
-    if (a + b <= c and a + c <= b and b + c <= a)
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
     {
-        cout << "NO";
+        cin >> a[i];
     }
-    else if (a + b > c and a + c > b and b + c > a)
+    int u , v;
+    for (int i = 1; i <= n; i++)
     {
-        cout << "YES";
+        cin >> u >> v;
+
     }
-    else
-    {
-        cout << "NO";
-    }
-    /// if you see me calling thì xin em không nhấc máy mà nếu như me lỡ nghe rồi thì cho anh xin nốt lần này 
 }

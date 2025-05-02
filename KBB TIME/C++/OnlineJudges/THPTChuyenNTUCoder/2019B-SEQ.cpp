@@ -13,7 +13,8 @@ kien n, a[1000000];
 kien f[1000000], dp[1000000];
 kien ans = INF;  
 
-int main() {
+JAV() 
+{
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
