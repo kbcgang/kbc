@@ -28,6 +28,5 @@ JAV()
     else
     {
         cout << "NO";
-    }
-    /// if you see me calling thì xin em không nhấc máy mà nếu như me lỡ nghe rồi thì cho anh xin nốt lần này 
+    } 
 }

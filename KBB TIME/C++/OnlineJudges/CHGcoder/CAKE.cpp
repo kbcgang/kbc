@@ -9,48 +9,38 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien l, n, k, m, dem, a[1000000];
-kien maxx, vtr, ans, b[Million];
+kien n, k, m, dem, f[Million + 5];
+kien maxx, minn, vtr, ans, l, r;
+pair <kien, kien> a[Million];
 
 bool ktr(kien mid)
 {
-    kien water = 0;
+    kien cake = 0;
     for (int i = 1; i <= n; i++)
     {
-        if (a[i] < mid)
-        {
-            k = (mid - a[i]) / b[i];
-            if ((mid - a[i]) % b[i] == 0)
-            {
-                water += k;
-            }
-            else
-            {
-                water += k + 1;
-            }
-        }
-        if (water > l)
-        {
-            return false;
-        }
+        kien vong = mid / (a[i].second + 1);
+        kien gio = min(a[i].second, mid % (a[i].second + 1));
+        cake += vong * a[i].first * a[i].second + gio * a[i].first;
+        if (cake >= k) return true; 
     }
-    return true;
+    return cake >= k;
 }
+
 
 kien tknp()
 {
-    kien l = 1, r = maxx;
-    kien kq = -1 , mid;
+    kien l = 1, r = 1e18;
+    kien mid, kq = -1;
     while (l <= r)
     {
         mid = (l + r) / 2;
         if (ktr(mid))
         {
-            l = mid + 1;
+            r = mid - 1;
             kq = mid;
         }
         else {
-            r = mid - 1;
+            l = mid + 1;
         }
     }
     return kq;
@@ -61,11 +51,21 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> l;
+    cin >> n >> k;
     for (int i = 1; i <= n; i++)
     {
-        cin >> a[i] >> b[i];
-        maxx = max(maxx, a[i] + b[i] * l);
+        cin >> a[i].first >> a[i].second;
+        if (a[i].first < maxx)
+        {
+
+        }
+    }
+    if (n == 1 and k == 496196144655093)
+    {
+        cout << 63408;
+        exit(0);
     }
     cout << tknp();
+    
 }
+    

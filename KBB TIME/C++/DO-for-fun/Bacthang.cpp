@@ -11,22 +11,24 @@ using namespace std;
 #define MOD 1000000007
 kien n,k,m,dem,f[NT + 5], a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
+kien b[Million];
 
-void sangNT()
+
+void sanguoc()
 {
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= Million; i++)
     {
         f[i] = 1;
-    }
+    }   
     f[0] = f[1] = 0;
-    for (int i = 2; i <= sqrt(NT); i++)
+    for (int i = 2; i <= Million; i++)
     {
-        for (int j = i * i; j <= NT; j += i)
+        for (int j = i * 2; j <= Million; j += i)
         {
-            f[j] = 0;
+            f[j]++;
         }
     }
-} 
+}
 
 JAV()
 {
@@ -38,5 +40,10 @@ JAV()
     {
         cin >> a[i];
     }
-    
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> b[i];
+    }
+    //// if you see me calling thì xin em khong nhắc máy mà nếu như em lỡ nghe rồi thì cho anh xin nốt lần này
+    //// gặp cây bút chì can you see that if you see me calling
 }

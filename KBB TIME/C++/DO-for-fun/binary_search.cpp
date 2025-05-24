@@ -1,51 +1,41 @@
+/// Hãy làm Sư tử, đừng làm Nai.
+/// Hãy làm thợ săn, đừng làm con mồi.
+/// --- trungkien1252010@gmai.com ---
+/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
+#define kien long long
 #define JAV main
-#define pii pair<int, int>
-#define all(x) (x).begin(), (x).end()
-#define pb push_back
 
-ll kq(vector<pii> &p)
+JAV() 
 {
-  if (p.size() <= 1)
-    return 0;
-  vector<ll> a, b;
-  for (int i = 0; i < p.size(); ++i)
-  {
-    int x = p[i].first, y = p[i].second;
-    a.pb(x + y);
-    b.pb(x - y);
-  }
-  auto f = [](vector<ll> &v)
-  {
-    sort(all(v));
-    ll res = 0, pre = 0;
-    for (int i = 0; i < v.size(); ++i)
-      res += v[i] * i - pre, pre += v[i];
-    return res;
-  };
-  return (f(a) + f(b)) / 2;
-}
-
-JAV()
-{
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-  int m, n;
-  cin >> m >> n;
-  vector<pii> M, S;
-  for (int i = 0; i < m; ++i)
-  {
+    ios::sync_with_stdio(0);
+    cin.tie(0); 
+    cout.tie(0);
+    kien n, c;
     string s;
-    cin >> s;
-    for (int j = 0; j < n; ++j)
+    cin >> n >> c >> s;
+
+    kien l = 0, count_a = 0, value = 0, res = 0;
+
+    for (kien r = 0; r < n; r++) 
     {
-      if (s[j] == 'M')
-        M.pb({i, j});
-      else if (s[j] == 'S')
-        S.pb({i, j});
+        if (s[r] == 'a') count_a++;
+        else if (s[r] == 'b') value += count_a;
+        while (value > c) 
+        {
+            if (s[l] == 'a') 
+            {
+                count_a--;
+            } else if (s[l] == 'b') 
+            {
+                value -= count_a;
+            }
+            l++;
+        }
+
+        res = max(res, r - l + 1);
     }
-  }
-  cout << kq(M) << " " << kq(S);
+
+    cout << res;
 }

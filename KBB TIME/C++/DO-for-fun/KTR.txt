@@ -1,0 +1,50 @@
+1. D
+2. B
+3. C
+4. C
+5. B
+6. D
+7. B
+7. C
+8. B
+9. D
+10. B
+11. D
+12. 
+13. C
+14. B
+15. D
+16. A
+17. B
+18. B
+19. C
+20. 
+21. D
+22. C
+23. A
+24. A
+25. A
+26. have repaired
+27. walks
+28. flew
+29. won't attend
+30. are cooking
+31. while (n > 0) tong += sum + 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

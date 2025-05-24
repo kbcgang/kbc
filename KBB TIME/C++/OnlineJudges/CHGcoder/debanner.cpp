@@ -10,7 +10,8 @@ using namespace std;
 #define NT 10000000
 #define MOD 1000000007
 kien n, k, m, dem, f[Million + 5], a[1000000];
-kien b[Million], vtr, ans, l, r, dp[1000000];
+kien vtr, ans, l, r, dp[1000000];
+unordered_map <int, int> pp;
 
 JAV()
 {
@@ -18,14 +19,21 @@ JAV()
     cin.tie(0);
     cout.tie(0);
     cin >> n;
-    for(int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        cin >> a[i];
+        cin >> a[i];    
+        pp[a[i]]++;
+    }
+    sort (a+ 1, a + 1 + n);
+    for (int i = n; i >= 1; i--)
+    {
+        f[i] = f[i + 1] + pp[a[i]];
+        pp[a[i]] = 0;
     }
     for (int i = 1; i <= n; i++)
     {
-        cin >> b[i];
-        ans = max(ans, a[i] + b[i]);
+        ans = max(ans, a[i] * f[i]);
     }
     cout << ans;
+    
 }
