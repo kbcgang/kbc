@@ -9,21 +9,28 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n, k, ans, m, dem, a, b;
+kien ans, n, k, m, dem, f[NT];
+unordered_map <int, int> pp;
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> a >> b;
-    ans = 1;
-    while (b > 0)
+    while (cin >> n)
     {
-        if (b % 2 == 1) 
-            ans = (ans * a);
-        a *= a;
-        b /= 2;
+        if (n <= NT)
+        {
+            f[n]++;
+            if (f[n] == 1)
+                ans++;
+        }
+        else
+        {
+            pp[n]++;
+            if (pp[n] == 1)
+                ans++;
+        }
     }
     cout << ans;
 }

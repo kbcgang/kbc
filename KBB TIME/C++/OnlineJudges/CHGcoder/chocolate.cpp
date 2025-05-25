@@ -9,21 +9,25 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n, k, ans, m, dem, a, b;
+kien n, k, m, dem, f[Million + 5], a[1000000];
+kien t, maxx, minn, vtr, ans, l, r, dp[1000000];
 
 JAV()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> a >> b;
-    ans = 1;
-    while (b > 0)
+    cin >> t;
+    while (t--)
     {
-        if (b % 2 == 1) 
-            ans = (ans * a);
-        a *= a;
-        b /= 2;
+        cin >> n;
+        minn = INT_MAX;
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> a[i];
+            minn = min(minn, a[i]);
+        }
+        cout << minn;
     }
-    cout << ans;
+    
 }

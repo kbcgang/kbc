@@ -45,6 +45,5 @@ JAV()
         }
         cout << ans << "\n";
     }
-
-    return 0;
 }
+

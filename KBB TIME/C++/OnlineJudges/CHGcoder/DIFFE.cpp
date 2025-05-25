@@ -11,23 +11,16 @@ using namespace std;
 #define MOD 1000000007
 kien n,k,m,dem,f[NT + 5], a[1000000];
 kien maxx,minn, vtr,ans,l,r, dp[1000000];
-kien b[Million];
+kien q, u , v;
 
-
-void sanguoc()
+int tknp()
 {
-    for (int i = 1; i <= Million; i++)
-    {
-        f[i] = 1;
-    }   
-    f[0] = f[1] = 0;
-    for (int i = 2; i <= Million; i++)
-    {
-        for (int j = i * 2; j <= Million; j += i)
-        {
-            f[j]++;
-        }
-    }
+    int l = 1, r = n;
+}
+
+int tknp()
+{
+    
 }
 
 JAV()
@@ -35,14 +28,14 @@ JAV()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> k;
+    cin >> n >> q;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
     }
-    for (int i = 1; i <= n; i++)
+    while (q--)
     {
-        cin >> b[i];
-    }
+        cin >> u >> v;
 
+    }
 }
