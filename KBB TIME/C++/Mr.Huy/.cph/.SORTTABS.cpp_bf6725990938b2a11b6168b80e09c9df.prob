@@ -1,1 +1,0 @@
-{"name":"Local: SORTTABS","url":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\SORTTABS.cpp","tests":[{"id":1735307750247,"input":"5 \n3 2 4 5 1 \n0 9 6 7 2","output":"11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\HP\\OneDrive\\Desktop\\kbc\\KBB TIME\\Mr.Huy\\SORTTABS.cpp","group":"local","local":true}

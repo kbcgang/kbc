@@ -1,7 +1,7 @@
-///Hãy làm Sư tử, đừng làm Nai.😅😅😅
-///Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
-///☆*: .｡. o(≧▽≦)o .｡.:*☆
+/// Hãy làm Sư tử, đừng làm Nai.😅😅😅
+/// Hãy làm thợ săn, đừng làm con mồi.
+///  --- trungkien1252010@gmai.com ---
+/// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
 #define kien long long
@@ -9,42 +9,69 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-int t;
-kien x, y, lop, ans;
-
-JAV() 
+kien a[1005], b[1005], dp[1005][1005];
+int bang(kien x, kien y)
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+    if (x == y)
+        return 1;
+    else
+        return 0;
+}
+
+JAV()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     cout.tie(0);
-    cin >> t;
-    while (t--) 
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin >> x >> y;
-        lop = max(x, y);
-        if (lop % 2 == 1) 
-        {  
-            if (x == lop) 
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+    if (n == 0)
+    {
+        cout << 0 << "\n";
+        return 0;
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] == b[i])
+        {
+            ans++;
+        }
+    }
+    if (n < 2)
+    {
+        cout << ans << "\n";
+        return 0;
+    }
+    int maxx = 0;
+    for (int i = 2; i <= n; i++)
+    {
+        for (int j = 0; j <= n - i; j++)
+        {
+            int r = j + i - 1;
+            int l = 0;
+            l += bang(a[r], b[j]) - bang(a[j], b[j]);
+            l += bang(a[j], b[r]) - bang(a[r], b[r]);
+            int mid = 0;
+            if (j + 1 <= r - 1)
             {
-                ans = (lop - 1) * (lop - 1) + y;
-            } 
-            else 
-            {
-                ans = lop * lop - x + 1;
+                mid = dp[j + 1][r - 1];
             }
-        } else 
-        { 
-            if (y == lop) 
+            dp[j][r] = l + mid;
+            if (dp[j][r] > maxx)
             {
-                ans = (lop - 1) * (lop - 1) + x;
-            } 
-            else 
-            {
-                ans = lop * lop - y + 1;
+                maxx = dp[j][r];
             }
         }
-        cout << ans << "\n";
     }
-
+    cout << ans + maxx << "\n";
     return 0;
 }

@@ -6,11 +6,24 @@
 using namespace std;
 #define kien long long
 #define JAV main
+#define fo(i,a,b) for (int i = a; i <= b; i++)
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,f[1000], dem[10000];
-kien maxx,minn, vtr,l,r, dp[1000], ques;
+kien n,k,m,f[NT + 5], dem[10000];
+kien maxx,minn, vtr,l,r, dp[1000], t;
+
+void sangNT()
+{
+    fo (i, 2, sqrt(NT)) {
+        if (f[i] == 0)
+        {
+            for (int j = i * i; j <= NT; j += i) {
+                f[j] = NT;
+            }
+        }
+    }
+}
 
 JAV()
 {
@@ -24,7 +37,7 @@ JAV()
     {
         if (s[i] == '?')
         {
-            ques++;
+            t++;
         }
         else
         dem[s[i]]++;

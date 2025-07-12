@@ -12,34 +12,29 @@ using namespace std;
 int ans, do_dai,n ;
 kien a[100005], sum, k;
 map<kien, int> pp;
-JAV() 
-{
+
+JAV() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     cin >> n >> k;
     pp[0] = 0;
-    for (int i = 1; i <= n; ++i) 
-    {
+    for (int i = 1; i <= n; ++i) {
         cin >> a[i];
         sum += a[i];
         kien ktr = sum - k * i;
-        if (pp.count(ktr)) 
-        {
+        if (pp.count(ktr)) {
             int l = pp[ktr];
             int len = i - l;
-            if (len > do_dai or (len == do_dai and l + 1 < ans)) 
-            {
+            if (len > do_dai or (len == do_dai and l + 1 < ans)) {
                 do_dai = len;
                 ans = l + 1;
             }
         } 
-        else 
-        {
+        else {
             pp[ktr] = i;
         }
     }
-
     if (do_dai == 0) 
         cout << 0;
     else 
@@ -49,3 +44,25 @@ JAV()
 }
 // 4 5
 // 2 4 5 6
+
+/// Những đêm không ngủ yên anh giật mình kêu tên em kéo lên
+/// kỉ niệm xưa không chia ly em đã trao hôm nào 
+// #include <bits/stdc++.h> 
+// using namespace std;
+// #define kien long long
+// #define JAV main
+// #define Million 1000000
+// #define NT 10000000
+// kien n, a[Million];
+
+// JAV() {
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0);
+//     cout.tie(0);
+//     cin >> n;
+//     for (int i = 1; i <= n; i++) {
+//         cin >> a[i];
+//     }                            {
+// }
+
+

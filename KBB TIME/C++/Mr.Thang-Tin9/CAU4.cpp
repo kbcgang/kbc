@@ -9,42 +9,67 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n, m;
-kien a[Million + 5];
-kien f[Million + 5];
-kien ans[Million + 5];
+const int MAXN = 200000 + 5;
+int n, x, y;
+int a[MAXN];   
+int b[MAXN];    
+int sgn[MAXN];   
 
-JAV()
-{
-    ios_base::sync_with_stdio(0);
+JAV() {
+    ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> m;
-    for(int i = 1; i <= n; i++)
-    {
+    cin >> n >> x >> y;
+    for (int i = 1; i <= n; i++) {
         cin >> a[i];
-    }
-    for(int i = 1; i <= m; i++)
-    {
-        cin >> f[i];
-        ans[i] = -1;
-    }
-    kien sum = 0;
-    for(int i = 1; i <= n; i++)
-    {
-        sum += a[i];
-        for(int j = 1; j <= m; j++)
-        {
-            if(ans[j] == -1 && sum >= f[j])
-            {
-                ans[j] = i;
-            }
+        if (a[i] > 0) {
+            sgn[i] = +1;
+            b[i] = a[i];
+        } else {
+            sgn[i] = -1;
+            b[i] = -a[i];
         }
     }
-    for(int i = 1; i <= m; i++)
-    {
-        cout << ans[i] << " ";
+
+    int posCnt = 0, negCnt = 0;
+    int R = 0;
+    int ans = -1, bestV = -1;
+    int bestDiff = MOD;
+    for (int L = 1; L <= n; L++) {
+        while (R < n && (posCnt < x || negCnt < y)) {
+            R++;
+            if (sgn[R] == +1) {
+                posCnt++;
+            } else {
+                negCnt++;
+            }
+        }
+        if (posCnt < x || negCnt < y) {
+            break;
+        }
+        int u = b[L];
+        int v = b[R];
+        int diff = v - u;
+        if (diff < bestDiff) {
+            bestDiff = diff;
+            ans = u;
+            bestV = v;
+        } else if (diff == bestDiff) {
+            if (ans == -1 || u < ans) {
+                ans = u;
+                bestV = v;
+            }
+        }
+        if (sgn[L] == +1) {
+            posCnt--;
+        } else {
+            negCnt--;
+        }
     }
-    cout << endl;
+    if (ans == -1) {
+        cout << -1;
+    } else {
+        cout << ans << " " << bestV;
+    }
     return 0;
 }

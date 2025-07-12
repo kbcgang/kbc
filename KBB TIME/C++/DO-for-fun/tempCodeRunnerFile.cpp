@@ -9,13 +9,17 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien n,k,m,dem,f[NT + 5], a[1000000];
-kien maxx,minn, vtr,ans,l,r, dp[1000000];
+kien n,k,m,dem;
+kien maxx,minn, vtr,ans,l,r;
 
 JAV()
 {
-ios_base::sync_with_stdio(0);
-cin.tie(0);
-cout.tie(0);
-
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    srand(time(NULL));
+    n = rand() % 100;
+    cout << n << "\n";
+    for (int i = 1; i <= n; i++)
+        cout << rand() % 100 << " ";
 }
