@@ -12,11 +12,11 @@ using namespace std;
 kien n, k, m, dem, W;
 kien weight, value, vtr, ans, l, r, dp[Million];
 
-struct knapsack3
+struct kbb
 {
     kien w, v, a;
 };
-knapsack3 input[1000];
+kbb knap[1000];
 
 JAV()
 {
@@ -26,14 +26,13 @@ JAV()
     cin >> n >> W;
     for (kien i = 1; i <= n; i++)
     {
-        cin >> input[i].w >> input[i].v >> input[i].a;
-        
-        for (kien j = 1; input[i].a > 0; j *= 2)
+        cin >> knap[i].w >> knap[i].v >> knap[i].a;
+        for (kien j = 1; knap[i].a > 0; j *= 2)
         {
-            dem = min(j, input[i].a);
-            input[i].a -= dem;
-            weight = dem * input[i].w;
-            value = dem * input[i].v;
+            dem = min(j, knap[i].a);
+            knap[i].a -= dem;
+            weight = dem * knap[i].w;
+            value = dem * knap[i].v;
             for (int k = W; k >= weight; k--)
             {
                 dp[k] = max(dp[k], dp[k - weight] + value);

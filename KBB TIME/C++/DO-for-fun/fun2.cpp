@@ -1,6 +1,6 @@
-/// Hãy làm Sư tử, đừng làm Nai.😅😅😅
+/// Hãy làm Sư tử, đừng làm Nai.
 /// Hãy làm thợ săn, đừng làm con mồi.
-///  --- trungkien1252010@gmai.com ---
+/// --- trungkien1252010@gmai.com ---
 /// ☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
@@ -9,69 +9,52 @@ using namespace std;
 #define Million 1000000
 #define NT 10000000
 #define MOD 1000000007
-kien a[1005], b[1005], dp[1005][1005];
-int bang(kien x, kien y)
-{
-    if (x == y)
-        return 1;
-    else
-        return 0;
+const int MXN = 1e4 + 5;
+kien n, k, m, dem, dx[5], dy[5], a[MXN][MXN];
+kien maxx, minn, vtr, ans, l, r, dp[1000000];
+bool visit[MXN][MXN];
+kien u, v;
+
+void dfs() {
+    queue <pair<int, int>> q;
+    dx[1] = -1, dx[2] = 0, dx[3] = 1, dx[4] = 0;
+    dy[1] = 0, dy[2] = 1, dy[3] = 0, dy[4] = -1;
+    q.push({u, v});
+    visit[u][v] = true;
+    ans = 1;
+    while (!q.empty()) {
+        pair <int, int> u = q.front();
+        q.pop();
+        for (int i = 1; i <= 4; i++) {
+            int nx = u.first + dx[i];
+            int ny = u.second + dy[i];
+            if (visit[nx][ny] == false and a[nx][ny] == 1 and nx >= 1 and ny >= 1 and  nx <= m and ny <= n) {
+                visit[nx][ny] = true;
+                ans++;
+                q.push({nx, ny});
+            }
+        }
+    }
+    cout << ans;
 }
+
 
 JAV()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
     cout.tie(0);
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
-    }
-    if (n == 0)
-    {
-        cout << 0 << "\n";
-        return 0;
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == b[i])
-        {
-            ans++;
+    cin >> m >> n >> u >> v;
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+            cin >> a[i][j];
+            
         }
     }
-    if (n < 2)
-    {
-        cout << ans << "\n";
-        return 0;
+    if (a[u][v] == 0) {
+        cout << 0;
+        exit(0);
     }
-    int maxx = 0;
-    for (int i = 2; i <= n; i++)
-    {
-        for (int j = 0; j <= n - i; j++)
-        {
-            int r = j + i - 1;
-            int l = 0;
-            l += bang(a[r], b[j]) - bang(a[j], b[j]);
-            l += bang(a[j], b[r]) - bang(a[r], b[r]);
-            int mid = 0;
-            if (j + 1 <= r - 1)
-            {
-                mid = dp[j + 1][r - 1];
-            }
-            dp[j][r] = l + mid;
-            if (dp[j][r] > maxx)
-            {
-                maxx = dp[j][r];
-            }
-        }
-    }
-    cout << ans + maxx << "\n";
-    return 0;
+    dfs();
+    
 }

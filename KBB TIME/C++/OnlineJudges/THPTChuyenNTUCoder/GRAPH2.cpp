@@ -11,7 +11,6 @@ using namespace std;
 #define MOD 1000000007
 kien n, k, m, dem, f[Million + 5], a[1000][1000];
 kien maxx, minn, ans, l, r;
-vector <int> dp[Million];
 bool visit[1000][1000];
 kien u,v;
 
@@ -65,8 +64,6 @@ JAV()
         for (int j = 1; j <= m; j++)
         {
             cin >> a[i][j];
-            dp[i].push_back(j);
-            dp[j].push_back(i);
         }
     }
     bfs();

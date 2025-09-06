@@ -10,20 +10,8 @@ using namespace std;
 #define NT 10000000
 #define MOD 1000000007
 kien n, m, k, a[405][405];
-kien f[405][405];
-int dp[1000005]; 
-int snt[Million];
-
-void sangNT() {
-	snt[0] = snt[1] = 1;
-	for (int i = 2; i <= sqrt(NT); i++) {
-		if (snt[i] == 0) {
-			for (int j = i * i; j <= NT; j += i) {
-				snt[j] = 0;
-			}
-		}
-	}
-} 
+kien f[405][405], vtr, lazy[Million + 5];
+kien dp[1000005]; 
  
 JAV() {
     ios::sync_with_stdio(0);
@@ -43,18 +31,23 @@ JAV() {
     kien ans = 0;
     for (int top = 1; top <= m; ++top) {
         for (int bot = top; bot <= m; ++bot) {
-            for (int i = 0; i < k; ++i) dp[i] = 0;
-            dp[0] = 1;  
+            vtr++;           
+            lazy[0] = vtr;
+            dp[0] = 1;
             int dem = 0;
             for (int col = 1; col <= n; ++col) {
                 kien s = f[bot][col] - f[top-1][col] - f[bot][col-1] + f[top-1][col-1];
                 dem = (dem + (int)(s % k) + k) % k;
+                if (lazy[dem] != vtr) {
+                    lazy[dem] = vtr;
+                    dp[dem] = 0;
+                }
                 ans += dp[dem];
                 dp[dem] += 1;
             }
         }
     }
-    cout << ans << "\n";
+    cout << ans << "\n";    
     return 0;
 }
 

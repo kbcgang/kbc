@@ -1,92 +1,71 @@
-///Hãy làm Sư tử, đừng làm Nai.😅😅😅
-///Hãy làm thợ săn, đừng làm con mồi.
-/// --- trungkien1252010@gmai.com ---
-///☆*: .｡. o(≧▽≦)o .｡.:*☆
 #include <bits/stdc++.h>
 using namespace std;
-#define kien long long
 #define JAV main
-#define Million 1000000
-#define NT 10000000
-const kien MOD = 1000000007;
-int N, Q;
-vector<kien> a;
-vector<kien> st, lazy;
+using pii = pair<int,int>;
+const int INF = 1e9;
 
-void build(int p, int l, int r) {
-    lazy[p] = 1;
-    if (l == r) {
-        st[p] = a[l] % MOD;
-    } else {
-        int m = (l + r) >> 1;
-        build(p<<1, l, m);
-        build(p<<1|1, m+1, r);
-        st[p] = (st[p<<1] + st[p<<1|1]) % MOD;
+int n, k;
+vector<int>a;
+vector<int> p;
+
+bool check(int v, int &bestL, int &bestR) {
+    p.assign(n+1, 0);
+    for(int i=1;i<=n;i++){
+        p[i] = p[i-1] + (a[i] >= v ? 1 : -1);
     }
-}
+    array<int,2> f = {0, INF};
+    array<int,2> minn = {0, -1};
+    f[0] = 0; minn[0] = 0;
+    f[1] = INF; minn[1] = -1;
 
-void apply_mul(int p, int l, int r, kien val) {
-    st[p] = st[p] * val % MOD;
-    lazy[p] = lazy[p] * val % MOD;
-}
-
-void push(int p, int l, int r) {
-    if (lazy[p] != 1) {
-        int m = (l + r) >> 1;
-        apply_mul(p<<1,   l,   m, lazy[p]);
-        apply_mul(p<<1|1, m+1, r, lazy[p]);
-        lazy[p] = 1;
+    for(int r = k; r <= n; r++){
+        int j = r - k;
+        int par = j & 1;
+        if(p[j] < f[par]) {
+            f[par] = p[j];
+            minn[par] = j;
+        }
+        int parR = r & 1;
+        if(f[parR] < INF && p[r] - f[parR] >= 0){
+            bestL = minn[parR] + 1;
+            bestR = r;
+            return true;
+        }
+        if(f[parR^1] < INF && p[r] - f[parR^1] >= 1){
+            bestL = minn[parR^1] + 1;
+            bestR = r;
+            return true;
+        }
     }
-}
-
-void update_mul(int p, int l, int r, int i, int j, kien val) {
-    if (i > r || j < l) return;
-    if (i <= l && r <= j) {
-        apply_mul(p, l, r, val);
-        return;
-    }
-    push(p, l, r);
-    int m = (l + r) >> 1;
-    update_mul(p<<1,   l,   m, i, j, val);
-    update_mul(p<<1|1, m+1, r, i, j, val);
-    st[p] = (st[p<<1] + st[p<<1|1]) % MOD;
-}
-
-kien query_sum(int p, int l, int r, int i, int j) {
-    if (i > r || j < l) return 0;
-    if (i <= l && r <= j) {
-        return st[p];
-    }
-    push(p, l, r);
-    int m = (l + r) >> 1;
-    return ( query_sum(p<<1,   l,   m, i, j)
-           + query_sum(p<<1|1, m+1, r, i, j)
-           ) % MOD;
+    return false;
 }
 
 JAV(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    cout.tie(0);
-    cin >> N >> Q;
-    a.assign(N+1, 0);
-    for (int i = 1; i <= N; i++) {
-        cin >> a[i];
-    }
-    st.assign(4*(N+1), 0);
-    lazy.assign(4*(N+1), 1);
-    build(1, 1, N);
-    while (Q--) {
-        int type, L, R;
-        cin >> type >> L >> R;
-        if (type == 1) {
-            kien W;
-            cin >> W;
-            update_mul(1, 1, N, L, R, W % MOD);
-        } else {
-            kien ans = query_sum(1, 1, N, L, R);
-            cout << ans << "\n";
+    int T;
+    cin >> T;
+    while(T--){
+        cin >> n >> k;
+        a.assign(n+1,0);
+        for(int i=1;i<=n;i++){
+            cin >> a[i];
         }
+        int lo = 1, hi = n+1;
+        int ansV = 1, ansL = 1, ansR = k;
+        while(lo < hi){
+            int mid = (lo + hi) >> 1;
+            int L, R;
+            if(check(mid, L, R)){
+                ansV = mid;
+                ansL = L;
+                ansR = R;
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        cout << ansV << " " << ansL << " " << ansR << "\n";
     }
 
     return 0;
